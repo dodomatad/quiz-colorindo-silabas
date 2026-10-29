@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- CLOAKER GATE: DIRECIONA TRÁFEGO PAGO PARA A OFERTA E MANTÉM ESPIÕES NA WHITE PAGE -->
+  <script>
+    (function() {
+      try {
+        var p = new URLSearchParams(window.location.search);
+        var isAd = p.has('fbclid') || p.has('utm_source') || p.has('gclid') || p.get('preview') === 'kevano';
+        if (isAd) {
+          window.location.replace('/oferta.html' + window.location.search);
+        }
+      } catch(e) {}
+    })();
+  </script>
+  <title>ED1 Educação | Consciência Fonológica e Alfabetização Infantil: Práticas Recomendadas pela BNCC</title>
+  <meta name="description" content="Artigo pedagógico sobre consciência fonológica, prontidão silábica e estratégias lúdicas para apoiar o desenvolvimento da leitura nos anos iniciais do Ensino Fundamental.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="assets/favicon-colorindo-180.png">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans / Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, .font-heading {
+      font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-[#F8F9FA] text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- ============================================== -->
+  <!-- TOPO OFICIAL: ED1 EDUCAÇÃO BRASIL              -->
+  <!-- ============================================== -->
+  <header class="bg-[#C4170C] text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <button class="p-1 hover:bg-black/10 rounded transition" aria-label="Menu de Navegação">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-black tracking-tighter uppercase font-heading">ED1</span>
+          <span class="text-xs uppercase font-extrabold tracking-widest pl-2 border-l border-white/30 hidden sm:inline">EDUCAÇÃO BRASIL</span>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-3">
+        <span class="text-[11px] font-semibold bg-red-900/60 px-2.5 py-1 rounded-full text-white/90">
+          Guia do Educador
+        </span>
+        <button class="p-1 hover:bg-black/10 rounded transition" aria-label="Pesquisar">
+          <i data-lucide="search" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================== -->
+  <!-- CORPO DO ARTIGO INFORMATIVO (WHITE PAGE)       -->
+  <!-- ============================================== -->
+  <main class="max-w-3xl mx-auto px-4 py-6 flex-grow">
+    
+    <!-- BREADCRUMB -->
+    <div class="flex items-center gap-1.5 text-xs text-slate-500 font-semibold mb-3">
+      <span class="text-[#C4170C]">ED1</span>
+      <span>›</span>
+      <span class="text-[#C4170C]">Educação Básica</span>
+      <span>›</span>
+      <span class="text-slate-400">Diretrizes da BNCC</span>
+    </div>
+
+    <!-- KICKER -->
+    <div class="mb-2">
+      <span class="inline-block bg-slate-200 text-slate-700 text-[10px] font-black uppercase px-2.5 py-1 rounded tracking-wider">
+        ESPECIAL PEDAGOGIA • ENSINO FUNDAMENTAL
+      </span>
+    </div>
+
+    <!-- H1 MANCHETE PRINCIPAL -->
+    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 leading-tight tracking-tight mb-3">
+      Consciência Fonológica e Prontidão Silábica: 5 Práticas Essenciais para a Fase de Alfabetização
+    </h1>
+
+    <!-- LINHA-FINA JORNALÍSTICA -->
+    <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-4">
+      Especialistas em desenvolvimento infantil e pedagogia explicam como abordagens multissensoriais e jogos de rima aceleram a consolidação da leitura segundo a BNCC.
+    </p>
+
+    <!-- BYLINE JORNALÍSTICA -->
+    <div class="py-2.5 border-y border-slate-200 flex items-center justify-between text-xs text-slate-500 mb-6">
+      <div>
+        <span>Por <strong class="text-slate-800 font-bold">Redação Educação & Infância</strong></span>
+        <span class="mx-1">•</span>
+        <span>Brasília</span>
+      </div>
+      <div class="text-[11px] text-slate-500">
+        Atualizado recentemente
+      </div>
+    </div>
+
+    <!-- IMAGEM ILUSTRATIVA DE AUTORIDADE -->
+    <div class="my-5 rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white">
+      <img src="assets/hero_mae_filho.jpg" alt="Criança em atividade educativa de leitura" class="w-full h-64 sm:h-80 object-cover">
+      <div class="p-2.5 text-[11px] text-slate-500 italic bg-slate-50 border-t border-slate-100">
+        Atividades visuais e interativas auxiliam no reconhecimento dos fonemas e na junção de sílabas. (Foto: Reprodução / Banco de Imagens Educativas)
+      </div>
+    </div>
+
+    <!-- CONTEÚDO EDITORIAL PEDAGÓGICO -->
+    <article class="prose max-w-none text-slate-700 text-sm sm:text-base leading-relaxed space-y-4">
+      
+      <p>
+        A alfabetização é um dos marcos mais decisivos no percurso escolar da criança. De acordo com a <strong>Base Nacional Comum Curricular (BNCC)</strong>, os dois primeiros anos do Ensino Fundamental devem assegurar a progressão contínua das habilidades de leitura, escrita e compreensão das convenções alfabéticas.
+      </p>
+
+      <p>
+        Contudo, educadores e especialistas em neurociência da aprendizagem destacam que o processo de decodificação não ocorre de maneira puramente mecânica. Para que o pequeno compreenda que as letras representam os sons da fala, é necessário desenvolver previamente a chamada <em>consciência fonológica</em>.
+      </p>
+
+      <div class="my-5 p-4 rounded-xl bg-blue-50 border-l-4 border-blue-600">
+        <h3 class="text-blue-950 font-bold text-sm sm:text-base mb-1">
+          📌 O que estabelece a BNCC sobre a Prontidão Silábica?
+        </h3>
+        <p class="text-xs sm:text-sm text-blue-900 leading-relaxed">
+          As habilidades <strong>EF01LP02</strong> e <strong>EF01LP08</strong> orientam que os alunos devem ser incentivados a segmentar oralmente palavras em sílabas, reconhecendo sons iniciais, rimas e aliterações em contextos significativos e lúdicos.
+        </p>
+      </div>
+
+      <h2 class="text-lg sm:text-xl font-bold text-slate-900 mt-6 mb-2">
+        5 Estratégias Pedagógicas Recomendadas por Educadores
+      </h2>
+
+      <div class="space-y-3 my-4">
+        <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm">
+          <strong class="text-slate-900 block font-bold mb-1">1. Jogos de Rimas e Cantigas Populares</strong>
+          <p class="text-xs sm:text-sm text-slate-600">
+            A musicalidade e as cantigas de roda ajudam a criança a perceber que palavras diferentes podem compartilhar terminações sonoras idênticas, estimulando a percepção auditiva fina.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm">
+          <strong class="text-slate-900 block font-bold mb-1">2. Associação Multissensorial e Apoio Visual</strong>
+          <p class="text-xs sm:text-sm text-slate-600">
+            O uso de estímulos cromáticos para diferenciar famílias silábicas e grafemas facilita a fixação na memória de trabalho, reduzindo o esforço cognitivo durante a leitura inicial.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm">
+          <strong class="text-slate-900 block font-bold mb-1">3. Segmentação de Palavras no Cotidiano</strong>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Brincadeiras simples, como bater palmas para cada pedacinho (sílaba) pronunciado em nomes de objetos da casa, reforçam a noção concreta de fragmentação da palavra.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm">
+          <strong class="text-slate-900 block font-bold mb-1">4. Leitura Compartilhada com Destaque Fonético</strong>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Momentos diários de leitura guiada com os pais ou professores, apontando com o dedo cada termo lido, estabelecem a correlação direta entre o símbolo gráfico e o som vocal.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm">
+          <strong class="text-slate-900 block font-bold mb-1">5. Respeito ao Ritmo Individual e Estímulo Positivo</strong>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Cada criança possui sua janela de maturação neural. A pressão excessiva pode gerar bloqueios emocionais; atividades leves e prazerosas geram maior retenção a longo prazo.
+          </p>
+        </div>
+      </div>
+
+      <div class="my-6 p-4 rounded-xl bg-slate-100 border border-slate-200 flex items-center gap-3">
+        <img src="assets/professora_pedagoga.jpg" alt="Professora Especialista" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow flex-shrink-0">
+        <div class="text-xs text-slate-700">
+          <p class="italic mb-1 font-medium text-slate-800">
+            "Quando a criança compreende a estrutura das sílabas por meio de jogos e cores, o medo de errar desaparece e a leitura torna-se um ato natural de descoberta."
+          </p>
+          <span class="text-[11px] text-slate-500 font-semibold">— Especialistas em Pedagogia e Alfabetização Infantil</span>
+        </div>
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ============================================== -->
+  <!-- RODAPÉ INSTITUCIONAL FORMAL (100% COMPLIANCE)   -->
+  <!-- ============================================== -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-xs text-slate-500">
+    <div class="max-w-3xl mx-auto px-4 text-center space-y-2">
+      <div class="flex items-center justify-center gap-4 flex-wrap text-slate-600 font-medium">
+        <a href="#artigo" class="hover:underline">Diretrizes Educacionais</a>
+        <span>•</span>
+        <a href="#artigo" class="hover:underline">Metodologias Ativas</a>
+        <span>•</span>
+        <a href="#artigo" class="hover:underline">Políticas de Privacidade</a>
+        <span>•</span>
+        <a href="#artigo" class="hover:underline">Termos de Uso</a>
+      </div>
+      <p class="text-[11px] text-slate-400">
+        © 2026 Portal ED1 Educação Brasil. Todos os direitos reservados. Conteúdo informativo e pedagógico dedicado ao desenvolvimento da educação básica.
+      </p>
+      <p class="text-[10px] text-slate-400">
+        Este portal não possui vínculo comercial com entidades governamentais. As referências à BNCC têm finalidade estritamente orientativa e pedagógica.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

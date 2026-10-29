@@ -10,6 +10,41 @@
       "dest": "/assets/$1"
     },
     {
+      "src": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "fbclid"
+        }
+      ],
+      "dest": "/oferta.html"
+    },
+    {
+      "src": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "utm_source"
+        }
+      ],
+      "dest": "/oferta.html"
+    },
+    {
+      "src": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "preview",
+          "value": "kevano"
+        }
+      ],
+      "dest": "/oferta.html"
+    },
+    {
+      "src": "/oferta",
+      "dest": "/oferta.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
