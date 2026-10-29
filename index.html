@@ -86,6 +86,24 @@
   </script>
 
   <style>
+    /* PROTEÇÃO ANTI-CÓPIA & ANTI-SCRAPING (SOP-11 SHIELD) */
+    body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    input {
+      -webkit-user-select: auto !important;
+      -moz-user-select: auto !important;
+      -ms-user-select: auto !important;
+      user-select: auto !important;
+    }
+    img {
+      -webkit-user-drag: none;
+      user-drag: none;
+      -webkit-touch-callout: none;
+    }
     body {
       background-color: #FAF9F5;
       color: #0F172A;
@@ -1315,6 +1333,62 @@
     lucide.createIcons();
     atualizarDataEditorial();
     initLiveProofEngine();
+    
+    // ========================================================
+    // ESCUDO ANTI-CLONAGEM E ANTI-SCRAPING (SOP-11 SHIELD)
+    // Protege contra ferramentas de cópia, spy tools e roubo
+    // ========================================================
+    (function initAntiTheftShield() {
+      // 1. Desabilitar clique direito (botão direito do mouse)
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      }, false);
+
+      // 2. Bloquear atalhos de desenvolvedor e visualização de código-fonte
+      document.addEventListener('keydown', function(e) {
+        // Bloquear F12
+        if (e.keyCode === 123) {
+          e.preventDefault();
+          return false;
+        }
+
+        // Bloquear Ctrl+U (Ver Código-Fonte)
+        if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 117)) {
+          e.preventDefault();
+          return false;
+        }
+
+        // Bloquear Ctrl+S (Salvar Página)
+        if (e.ctrlKey && (e.keyCode === 83 || e.keyCode === 115)) {
+          e.preventDefault();
+          return false;
+        }
+
+        // Bloquear Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (DevTools)
+        if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+          e.preventDefault();
+          return false;
+        }
+
+        // Bloquear Ctrl+A e Ctrl+C fora de inputs
+        if (e.ctrlKey && (e.keyCode === 65 || e.keyCode === 67)) {
+          const targetTag = e.target.tagName.toLowerCase();
+          if (targetTag !== 'input' && targetTag !== 'textarea') {
+            e.preventDefault();
+            return false;
+          }
+        }
+      }, false);
+
+      // 3. Deterrente no Console para espionagem
+      try {
+        console.clear();
+        console.log("%c🔒 PROPRIEDADE INTELECTUAL REGISTRADA", "color: #C4170C; font-size: 18px; font-weight: 900;");
+        console.log("%cEste sistema e seu conteúdo audiovisual são monitorados por protocolo digital contra clonagem não autorizada (Lei nº 9.610/98).", "color: #334155; font-size: 12px;");
+      } catch (err) {}
+    })();
+
 
     // CHECKOUT REAL DA CAKTO
     const CHECKOUT_CAKTO_BASE = "https://pay.cakto.com.br/mswtxij_1243353";
