@@ -1433,7 +1433,17 @@
     }
 
     function goToStep(stepNumber) {
-      // Ajustar largura do container para estética de notícia ou quiz
+      // 1. Ocultar IMEDIATAMENTE a barra flutuante mobile em qualquer etapa do teste
+      const stickyBar = document.getElementById('sticky-mobile-cta');
+      if (stickyBar) {
+        if (stepNumber === 0) {
+          stickyBar.style.display = 'block';
+        } else {
+          stickyBar.style.display = 'none';
+        }
+      }
+
+      // 2. Ajustar largura do container para estética de notícia ou quiz
       const mainContainer = document.getElementById('quiz-main-container');
       if (mainContainer) {
         if (stepNumber === 0) {
@@ -1485,7 +1495,7 @@
       const targetEl = document.getElementById(targetId);
       if (targetEl) {
         targetEl.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'instant' });
       }
 
       // Se for a tela de cálculo, disparar a animação
