@@ -1,0 +1,11 @@
+# Scripts temporários de inspeção e aplicação
+*.py
+*.bak
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs de tarefas
+*.log
