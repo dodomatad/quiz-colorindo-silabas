@@ -1241,16 +1241,116 @@
     atualizarDataEditorial();
     
     // ========================================================
-    // AUTOPLAY & ATIVAÇÃO IMEDIATA DE ÁUDIO (SOM AUTOMÁTICO)
+    // CONTROLE INTELIGENTE DO VÍDEO DO YOUTUBE
+    // Pausa automaticamente ao rolar para fora da tela, ao avançar para o teste ou ao trocar de aba
     // ========================================================
-    function triggerAudioUnlock() {
+    let currentActiveStep = 0;
+    let isVideoInView = true;
+    let isVideoManuallyPaused = false;
+    let hasEverStartedPlayback = false;
+
+    function pauseMecVideo() {
       const iframe = document.getElementById('mec-video-player');
       if (iframe && iframe.contentWindow) {
-        iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
-        iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[100]}', '*');
-        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        try {
+          iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        } catch(e) {}
       }
     }
+
+    function playMecVideo() {
+      if (currentActiveStep !== 0 || !isVideoInView || isVideoManuallyPaused) return;
+      const iframe = document.getElementById('mec-video-player');
+      if (iframe && iframe.contentWindow) {
+        try {
+          iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        } catch(e) {}
+      }
+    }
+
+    function triggerAudioUnlock() {
+      if (currentActiveStep !== 0 || !isVideoInView || isVideoManuallyPaused) return;
+      const iframe = document.getElementById('mec-video-player');
+      if (iframe && iframe.contentWindow) {
+        try {
+          iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+          iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[100]}', '*');
+          iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+          hasEverStartedPlayback = true;
+        } catch(e) {}
+      }
+    }
+
+    // Ouvinte para detectar quando o usuário pausou manualmente no próprio player do YouTube
+    window.addEventListener('message', function(event) {
+      try {
+        let data = event.data;
+        if (typeof data === 'string') {
+          data = JSON.parse(data);
+        }
+        if (data) {
+          const state = (data.event === 'onStateChange') ? data.info : (data.info && data.info.playerState);
+          if (state === 2) {
+            if (isVideoInView && currentActiveStep === 0) {
+              isVideoManuallyPaused = true;
+            }
+          } else if (state === 1) {
+            isVideoManuallyPaused = false;
+            hasEverStartedPlayback = true;
+          }
+        }
+      } catch(e) {}
+    });
+
+    // Observador de visibilidade (IntersectionObserver)
+    function initVideoVisibilityObserver() {
+      const videoEl = document.getElementById('mec-video-player');
+      if (!videoEl) return;
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting || entry.intersectionRatio < 0.20) {
+              isVideoInView = false;
+              pauseMecVideo();
+            } else if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
+              isVideoInView = true;
+              if (currentActiveStep === 0 && !isVideoManuallyPaused && hasEverStartedPlayback) {
+                playMecVideo();
+              }
+            }
+          });
+        }, {
+          threshold: [0, 0.20, 0.35, 0.70]
+        });
+
+        observer.observe(videoEl);
+      } else {
+        window.addEventListener('scroll', function() {
+          if (currentActiveStep !== 0) return;
+          const rect = videoEl.getBoundingClientRect();
+          const inView = (rect.bottom > 80 && rect.top < (window.innerHeight - 80));
+          if (!inView && isVideoInView) {
+            isVideoInView = false;
+            pauseMecVideo();
+          } else if (inView && !isVideoInView) {
+            isVideoInView = true;
+            if (!isVideoManuallyPaused && hasEverStartedPlayback) playMecVideo();
+          }
+        }, { passive: true });
+      }
+
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          pauseMecVideo();
+        } else if (currentActiveStep === 0 && isVideoInView && !isVideoManuallyPaused && hasEverStartedPlayback) {
+          playMecVideo();
+        }
+      });
+    }
+
+    // Inicializar observador de visibilidade do vídeo
+    initVideoVisibilityObserver();
 
     // Tentar tocar com som imediatamente e em intervalos iniciais
     window.addEventListener('load', function() {
@@ -1358,6 +1458,13 @@
     }
 
     function goToStep(stepNumber) {
+      currentActiveStep = stepNumber;
+
+      // Se saiu da etapa 0 (foi para as perguntas 1 a 6 ou resultado), PAUSA O VÍDEO IMEDIATAMENTE
+      if (stepNumber !== 0) {
+        pauseMecVideo();
+      }
+
       // 1. Ocultar IMEDIATAMENTE a barra flutuante mobile em qualquer etapa do teste
       const stickyBar = document.getElementById('sticky-mobile-cta');
       if (stickyBar) {
