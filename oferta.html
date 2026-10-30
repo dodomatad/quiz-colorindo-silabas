@@ -302,7 +302,7 @@
         </div>
 
         <!-- ============================================== -->
-        <!-- CARD DE VÍDEO COMPACTO: YOUTUBE OFICIAL   -->
+        <!-- CARD DE VÍDEO COMPACTO: YOUTUBE OFICIAL (AUTOPLAY) -->
         <!-- ============================================== -->
         <div class="my-4 rounded-xl overflow-hidden border border-slate-300 bg-slate-950 shadow-sm">
           <div class="bg-[#C4170C] px-3 py-1.5 flex items-center justify-between text-white text-[11px] font-bold">
@@ -311,8 +311,16 @@
             </span>
             <span class="text-[9px] bg-red-950 px-1.5 py-0.5 rounded text-white/90">BALANÇO • MEC</span>
           </div>
-          <div class="relative w-full aspect-video bg-black">
-            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/rmtZ2xQU0Ec?rel=0" title="Balanço Oficial - Indicador Criança Alfabetizada MEC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="relative w-full aspect-video bg-black group">
+            <iframe id="mec-video-player" class="w-full h-full" src="https://www.youtube-nocookie.com/embed/rmtZ2xQU0Ec?autoplay=1&mute=1&playsinline=1&rel=0&enablejsapi=1" title="Balanço Oficial - Indicador Criança Alfabetizada MEC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            
+            <!-- OVERLAY / BANNER INTELIGENTE DE ATIVAÇÃO DE ÁUDIO -->
+            <button id="unmute-banner" onclick="unmuteVideo()" type="button" aria-label="Ativar som do vídeo" class="absolute top-3 left-1/2 -translate-x-1/2 bg-black/90 hover:bg-black text-white px-3.5 py-1.5 rounded-full shadow-2xl flex items-center gap-2 cursor-pointer border border-emerald-400/60 transition-all duration-300 hover:scale-105 z-20 text-[11px] sm:text-xs font-bold backdrop-blur-md animate-pulse">
+              <svg class="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+              </svg>
+              <span>VÍDEO JÁ INICIADO • CLIQUE PARA ATIVAR O SOM 🔊</span>
+            </button>
           </div>
         </div>
 
@@ -1345,6 +1353,25 @@
     lucide.createIcons();
     atualizarDataEditorial();
     initLiveProofEngine();
+    
+    // ========================================================
+    // AUTOPLAY & CONTROLE DE ÁUDIO DO VÍDEO DO MEC
+    // ========================================================
+    function unmuteVideo() {
+      const iframe = document.getElementById('mec-video-player');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+        iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[100]}', '*');
+        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+      }
+      const banner = document.getElementById('unmute-banner');
+      if (banner) {
+        banner.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        banner.style.opacity = '0';
+        banner.style.transform = 'translate(-50%, -10px) scale(0.9)';
+        setTimeout(function() { banner.style.display = 'none'; }, 300);
+      }
+    }
     
     // ========================================================
     // ESCUDO ANTI-CLONAGEM E ANTI-SCRAPING (SOP-11 SHIELD)
