@@ -253,7 +253,7 @@
         <div class="py-2.5 border-y border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 mb-4">
           <div>
             <span>Por <strong class="text-slate-900 font-bold">Redação Brasil Educação & Infância</strong> — São Paulo</span>
-            <span class="text-[11px] text-slate-500 ml-1.5" id="editorial-date-display">Hoje • Atualizado há 14 minutos</span>
+            <span class="text-[11px] text-slate-500 ml-1.5" id="editorial-date-display">• Hoje</span>
           </div>
           
           <!-- BOTÕES DE COMPARTILHAMENTO RÁPIDO -->
@@ -1372,7 +1372,7 @@
           const ano = hoje.getFullYear();
           const horas = String(hoje.getHours()).padStart(2, '0');
           const minutos = String(hoje.getMinutes()).padStart(2, '0');
-          el.innerText = `${dia}/${mes}/${ano} ${horas}h${minutos} • Atualizado há 14 minutos`;
+          el.innerText = `• ${dia}/${mes}/${ano} ${horas}h${minutos}`;
         }
       } catch(e) {}
     }
