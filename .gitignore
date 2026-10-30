@@ -9,3 +9,5 @@ Desktop.ini
 
 # Logs de tarefas
 *.log
+
+.vercel
