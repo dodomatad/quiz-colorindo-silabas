@@ -1439,36 +1439,7 @@
     // MOTOR DE RETENÇÃO E PROVA SOCIAL VIVA (SOP-11)
     // ==========================================
     function initLiveProofEngine() {
-      // 1. Atualizar contadores iniciais
-      const evalNumEl = document.getElementById('live-eval-number');
-      const onlineEl = document.getElementById('live-online-users');
-      if (evalNumEl) evalNumEl.innerText = currentEvalCount.toLocaleString('pt-BR');
-      if (onlineEl) onlineEl.innerText = currentOnlineUsers;
-
-      // 2. Ticker de avaliações: incrementa a cada 4 a 8 segundos
-      setInterval(() => {
-        const increment = Math.random() > 0.65 ? 2 : 1;
-        currentEvalCount += increment;
-        sessionStorage.setItem('live_eval_count', currentEvalCount);
-
-        if (evalNumEl) {
-          evalNumEl.innerText = currentEvalCount.toLocaleString('pt-BR');
-          const badge = document.getElementById('badge-eval-counter');
-          if (badge) {
-            badge.classList.add('scale-105', 'bg-emerald-900');
-            setTimeout(() => badge.classList.remove('scale-105', 'bg-emerald-900'), 350);
-          }
-        }
-      }, 5500);
-
-      // 3. Flutuação orgânica de usuários online
-      setInterval(() => {
-        const delta = Math.floor(Math.random() * 7) - 3;
-        currentOnlineUsers = Math.max(312, Math.min(342, currentOnlineUsers + delta));
-        if (onlineEl) onlineEl.innerText = currentOnlineUsers;
-      }, 7000);
-
-      // 4. Notificações Flutuantes (Social Proof Toasts)
+      // 1. Notificações Flutuantes (Social Proof Toasts)
       const toastList = [
         { name: "Camila R. (Campinas/SP)", action: "Concluiu o diagnóstico para o filho de 6 anos", icon: "👩‍👧" },
         { name: "Profª Sandra M. (Curitiba/PR)", action: "Baixou o kit Colorindo as Sílabas para a turma", icon: "👩‍🏫" },
