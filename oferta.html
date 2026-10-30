@@ -886,28 +886,39 @@
           </div>
 
           <!-- GRÁFICO COMPARATIVO DE EVOLUÇÃO (ONTEM, HOJE, EM 21 DIAS) -->
-          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 mb-2">
-            <h4 class="font-display font-bold text-slate-900 text-sm text-center mb-3">
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-2.5 sm:p-5 mb-2">
+            <h4 class="font-display font-bold text-slate-900 text-xs sm:text-sm text-center mb-2.5">
               Projeção de Evolução do(a) <span class="res-child-name-inline text-brand-600">seu filho</span>
             </h4>
-            <div class="grid grid-cols-3 gap-2.5 text-center">
-              <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-subtle">
-                <span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">ONTEM</span>
-                <span class="text-2xl block mb-1">🛑</span>
-                <strong class="text-xs text-slate-700 block leading-tight">Travado na Junção</strong>
-                <span class="text-[10px] text-slate-500">Choro e telas</span>
+            <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5 text-center">
+              <!-- ONTEM -->
+              <div class="min-w-0 bg-white px-1 py-3 sm:p-3.5 rounded-xl sm:rounded-2xl border border-slate-200 shadow-subtle flex flex-col justify-between min-h-[145px]">
+                <div>
+                  <span class="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-tight block mb-1">ONTEM</span>
+                  <span class="text-xl sm:text-2xl block mb-1.5">🛑</span>
+                  <strong class="text-[11px] sm:text-xs text-slate-700 font-bold block leading-tight">Travado na<br class="sm:hidden"> Junção</strong>
+                </div>
+                <span class="text-[9px] sm:text-[10px] text-slate-500 block leading-tight mt-1">Choro e<br class="sm:hidden"> telas</span>
               </div>
-              <div class="bg-amberBrand-50 p-3.5 rounded-2xl border border-amberBrand-200 shadow-subtle">
-                <span class="text-[10px] font-bold text-amber-700 uppercase block mb-1">HOJE</span>
-                <span class="text-2xl block mb-1">🔍</span>
-                <strong class="text-xs text-amber-950 block leading-tight">Diagnóstico Feito</strong>
-                <span class="text-[10px] text-amber-700">Bloqueio identificado</span>
+
+              <!-- HOJE -->
+              <div class="min-w-0 bg-amberBrand-50 px-1 py-3 sm:p-3.5 rounded-xl sm:rounded-2xl border border-amberBrand-200 shadow-subtle flex flex-col justify-between min-h-[145px]">
+                <div>
+                  <span class="text-[9px] sm:text-[10px] font-bold text-amber-700 uppercase tracking-tight block mb-1">HOJE</span>
+                  <span class="text-xl sm:text-2xl block mb-1.5">🔍</span>
+                  <strong class="text-[11px] sm:text-xs text-amber-950 font-bold block leading-tight">Diagnóstico<br class="sm:hidden"> Feito</strong>
+                </div>
+                <span class="text-[9px] sm:text-[10px] text-amber-700 block leading-tight mt-1">Bloqueio<br class="sm:hidden"> identificado</span>
               </div>
-              <div class="bg-brand-50 p-3.5 rounded-2xl border border-brand-300 shadow-sm">
-                <span class="text-[10px] font-bold text-brand-700 uppercase block mb-1">EM 21 DIAS</span>
-                <span class="text-2xl block mb-1">🎉</span>
-                <strong class="text-xs text-brand-900 block leading-tight">Lendo Sozinho</strong>
-                <span class="text-[10px] text-brand-700 font-bold">Sílabas de A a Z</span>
+
+              <!-- EM 21 DIAS -->
+              <div class="min-w-0 bg-brand-50 px-1 py-3 sm:p-3.5 rounded-xl sm:rounded-2xl border border-brand-300 shadow-sm flex flex-col justify-between min-h-[145px]">
+                <div>
+                  <span class="text-[9px] sm:text-[10px] font-bold text-brand-700 uppercase tracking-tight block mb-1">EM 21 DIAS</span>
+                  <span class="text-xl sm:text-2xl block mb-1.5">🎉</span>
+                  <strong class="text-[11px] sm:text-xs text-brand-900 font-bold block leading-tight">Lendo<br class="sm:hidden"> Sozinho</strong>
+                </div>
+                <span class="text-[9px] sm:text-[10px] text-brand-700 font-bold block leading-tight mt-1">Sílabas de<br class="sm:hidden"> A a Z</span>
               </div>
             </div>
           </div>
