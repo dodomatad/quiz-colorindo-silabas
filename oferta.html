@@ -1267,7 +1267,6 @@
     // Inicializar ícones Lucide
     lucide.createIcons();
     atualizarDataEditorial();
-    initLiveProofEngine();
     
     // ========================================================
     // AUTOPLAY & CONTROLE DE ÁUDIO DO VÍDEO DO MEC
@@ -1364,57 +1363,7 @@
 
     // Navegação suave entre etapas
     
-    // ==========================================
-    // MOTOR DE RETENÇÃO E PROVA SOCIAL VIVA (SOP-11)
-    // ==========================================
-    function initLiveProofEngine() {
-      // 1. Notificações Flutuantes (Social Proof Toasts)
-      const toastList = [
-        { name: "Camila R. (Campinas/SP)", action: "Concluiu o diagnóstico para o filho de 6 anos", icon: "👩‍👧" },
-        { name: "Profª Sandra M. (Curitiba/PR)", action: "Baixou o kit Colorindo as Sílabas para a turma", icon: "👩‍🏫" },
-        { name: "Juliana P. (Belo Horizonte/MG)", action: "Iniciou o plano de 21 dias do Lucas", icon: "👩‍👧" },
-        { name: "Renata B. (São Paulo/SP)", action: "Garantido com o Order Bump de Sílabas Cursivas", icon: "👩‍👧" },
-        { name: "Profª Letícia F. (Porto Alegre/RS)", action: "Imprimiu as famílias silábicas para reforço", icon: "👩‍🏫" },
-        { name: "Patrícia S. (Rio de Janeiro/RJ)", action: "Destravou a junção silábica do Enzo", icon: "👩‍👧" },
-        { name: "Luciana G. (Goiânia/GO)", action: "Concluiu a avaliação diagnóstica de prontidão", icon: "👩‍👧" },
-        { name: "Profª Cláudia T. (Joinville/SC)", action: "Adotou o método multissensorial na escola", icon: "👩‍🏫" },
-        { name: "Mariana A. (Fortaleza/CE)", action: "Garantido com acesso vitalício imediato", icon: "👩‍👧" },
-        { name: "Aline V. (Salvador/BA)", action: "Recebeu o plano individualizado do Arthur", icon: "👩‍👧" }
-      ];
 
-      let toastIdx = 0;
-      function showNextToast() {
-        const toast = document.getElementById('live-social-toast');
-        const titleEl = document.getElementById('toast-title');
-        const actionEl = document.getElementById('toast-action');
-        const avatarEl = document.getElementById('toast-avatar');
-
-        if (!toast || !titleEl || !actionEl) return;
-
-        const item = toastList[toastIdx % toastList.length];
-        toastIdx++;
-
-        titleEl.innerText = item.name;
-        actionEl.innerText = item.action;
-        avatarEl.innerText = item.icon;
-
-        // Slide up & fade in
-        toast.classList.remove('translate-y-24', 'opacity-0');
-        toast.classList.add('translate-y-0', 'opacity-100');
-
-        // Hide after 4.2s
-        setTimeout(() => {
-          toast.classList.remove('translate-y-0', 'opacity-100');
-          toast.classList.add('translate-y-24', 'opacity-0');
-        }, 4200);
-      }
-
-      // Dispara o primeiro toast após 4s, depois a cada 16s
-      setTimeout(() => {
-        showNextToast();
-        setInterval(showNextToast, 16000);
-      }, 4000);
-    }
 
     function atualizarDataEditorial() {
       try {
@@ -1656,18 +1605,7 @@
     }
   </script>
 
-  <!-- FLOATING LIVE SOCIAL PROOF TOAST WIDGET (SOP-11 RETENÇÃO MESTRE) -->
-  <div id="live-social-toast" class="fixed bottom-4 left-4 z-50 transform translate-y-24 opacity-0 transition-all duration-500 max-w-xs sm:max-w-sm pointer-events-none">
-    <div class="bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-2xl rounded-2xl p-3 flex items-center gap-3">
-      <div id="toast-avatar" class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-600 to-emerald-400 text-white flex items-center justify-center font-bold text-sm shadow-sm flex-shrink-0">
-        👩‍👧
-      </div>
-      <div class="text-left leading-tight">
-        <p class="text-xs font-black text-slate-900" id="toast-title">Camila R. (Campinas/SP)</p>
-        <p class="text-[11px] text-slate-600 mt-0.5" id="toast-action">Concluiu o diagnóstico de leitura há 14 segundos</p>
-      </div>
-    </div>
-  </div>
+
 
 
   <!-- STICKY MOBILE CTA BAR (FIXO NO RODAPÉ NO MOBILE ENQUANTO ESTÁ NO STEP 0) -->
