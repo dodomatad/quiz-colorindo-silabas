@@ -365,6 +365,32 @@
               </p>
             </div>
           </div>
+
+          <div id="extra-comments" class="hidden space-y-2 text-xs mt-2">
+            <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200/80">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold text-slate-900">Juliana Ramos <span class="text-[10px] font-normal text-slate-500">(Mãe do Enzo, 5 anos)</span></span>
+                <span class="text-[10px] text-emerald-700 font-bold">👍 31</span>
+              </div>
+              <p class="text-slate-600 text-[11px] leading-tight">
+                "Meu filho travava toda vez na hora de juntar as sílabas. O método das cores destravou a leitura em menos de 2 semanas sem briga!"
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200/80">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold text-slate-900">Carla Meireles <span class="text-[10px] font-normal text-slate-500">(Professora de 1º ano)</span></span>
+                <span class="text-[10px] text-emerald-700 font-bold">👍 29</span>
+              </div>
+              <p class="text-slate-600 text-[11px] leading-tight">
+                "Uso o método fono-visual na minha sala de aula. O formato de colorir fixa as sílabas na memória motora. Avaliação muito precisa!"
+              </p>
+            </div>
+          </div>
+
+          <div class="text-center mt-2.5">
+            <span onclick="toggleExtraComments()" class="text-xs font-bold text-[#C4170C] hover:underline cursor-pointer">outras avaliações</span>
+          </div>
         </div>
 
       </section>
@@ -1441,6 +1467,13 @@
     // Navegação suave entre etapas
     
 
+
+    function toggleExtraComments() {
+      const el = document.getElementById('extra-comments');
+      if (el) {
+        el.classList.toggle('hidden');
+      }
+    }
 
     function atualizarDataEditorial() {
       try {
