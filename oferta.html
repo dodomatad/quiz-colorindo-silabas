@@ -1634,16 +1634,6 @@
         pauseMecVideo();
       }
 
-      // 1. Ocultar IMEDIATAMENTE a barra flutuante mobile em qualquer etapa do teste
-      const stickyBar = document.getElementById('sticky-mobile-cta');
-      if (stickyBar) {
-        if (stepNumber === 0) {
-          stickyBar.style.display = 'block';
-        } else {
-          stickyBar.style.display = 'none';
-        }
-      }
-
       // 2. Ajustar largura do container para estética de notícia ou quiz
       const mainContainer = document.getElementById('quiz-main-container');
       if (mainContainer) {
@@ -1857,23 +1847,6 @@
       }, 1000);
     }
   </script>
-
-
-
-
-  <!-- STICKY MOBILE CTA BAR (FIXO NO RODAPÉ NO MOBILE ENQUANTO ESTÁ NO STEP 0) -->
-  <div id="sticky-mobile-cta" class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/90 py-2.5 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.12)] sm:hidden transition-all duration-300">
-    <div class="flex items-center justify-between gap-3">
-      <div class="leading-tight">
-        <span class="text-[9px] font-black text-[#C4170C] uppercase tracking-wider block">TESTE GRATUITO 2026</span>
-        <span class="text-xs font-bold text-slate-800">Descubra onde seu filho travou</span>
-      </div>
-      <button onclick="goToStep(1)" class="bg-[#C4170C] hover:bg-[#A8130A] active:bg-[#8B1008] text-white font-extrabold text-xs py-2.5 px-4 rounded-xl shadow-md flex items-center gap-1 flex-shrink-0 pulse-btn">
-        <span>FAZER TESTE</span>
-        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-      </button>
-    </div>
-  </div>
 
 </body>
 </html>
