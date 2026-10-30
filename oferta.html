@@ -1251,6 +1251,50 @@
             </p>
             <span class="text-xs font-bold text-slate-900 block">— Carla Meireles, Professora e Psicopedagoga (Curitiba/PR)</span>
           </div>
+
+          <!-- DEPOIMENTOS ADICIONAIS EXPANSÍVEIS -->
+          <div id="mais-depoimentos-container" class="hidden space-y-4 pt-1">
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/60">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1 text-amber-400 text-xs">★★★★★</div>
+                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Mãe Verificada</span>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-700 italic mb-2">
+                "Comprei achando que seria mais uma apostila esquecida no computador. Mas a dinâmica de associar cada som à cor fez meu pequeno destravar em 2 semanas sem briga no dever de casa."
+              </p>
+              <span class="text-xs font-bold text-slate-900 block">— Mariana Albuquerque, mãe do Theo (Belo Horizonte/MG)</span>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/60">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1 text-amber-400 text-xs">★★★★★</div>
+                <span class="text-[10px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full border border-purple-200">Educadora Verificada</span>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-700 italic mb-2">
+                "O método respeita exatamente a ordem neurocognitiva da rota fonológica recomendada na BNCC. Todas as mães deveriam ter acesso a esse material simples e assertivo."
+              </p>
+              <span class="text-xs font-bold text-slate-900 block">— Profª Luciana Farias, Especialista em Letramento (São Paulo/SP)</span>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/60">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1 text-amber-400 text-xs">★★★★★</div>
+                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Mãe Verificada</span>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-700 italic mb-2">
+                "Minha filha dizia que não conseguia ler e já estava ficando tímida na escola. Com 15 minutos por dia pintando as famílias silábicas, ela ganhou uma confiança inacreditável!"
+              </p>
+              <span class="text-xs font-bold text-slate-900 block">— Renata Silveira, mãe da Valentina (Rio de Janeiro/RJ)</span>
+            </div>
+          </div>
+
+          <!-- BOTÃO MOSTRAR MAIS AVALIAÇÕES EM VERMELHO -->
+          <div class="pt-2 text-center">
+            <button type="button" onclick="toggleMaisDepoimentos()" id="btn-toggle-depoimentos" class="w-full sm:w-auto mx-auto bg-[#C4170C] hover:bg-[#A8130A] active:bg-[#8B1008] text-white font-extrabold text-xs sm:text-sm py-3 px-6 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 group">
+              <span id="btn-toggle-depoimentos-text">Mostrar mais Avaliações</span>
+              <i data-lucide="chevron-down" id="btn-toggle-depoimentos-icon" class="w-4 h-4 transition-transform group-hover:translate-y-0.5"></i>
+            </button>
+          </div>
         </div>
 
         <!-- REFAZER QUIZ -->
@@ -1545,6 +1589,26 @@
     function closePageModal() {
       const modal = document.getElementById('page-preview-modal');
       if (modal) modal.classList.add('hidden');
+    }
+
+    // Toggle de mais depoimentos na tela de resultado
+    function toggleMaisDepoimentos() {
+      const container = document.getElementById('mais-depoimentos-container');
+      const textEl = document.getElementById('btn-toggle-depoimentos-text');
+      const iconEl = document.getElementById('btn-toggle-depoimentos-icon');
+      if (container) {
+        const isHidden = container.classList.contains('hidden');
+        if (isHidden) {
+          container.classList.remove('hidden');
+          if (textEl) textEl.innerText = 'Mostrar menos Avaliações';
+          if (iconEl) iconEl.style.transform = 'rotate(180deg)';
+        } else {
+          container.classList.add('hidden');
+          if (textEl) textEl.innerText = 'Mostrar mais Avaliações';
+          if (iconEl) iconEl.style.transform = 'rotate(0deg)';
+        }
+        lucide.createIcons();
+      }
     }
 
     document.addEventListener('keydown', function(e) {
