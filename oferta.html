@@ -984,6 +984,55 @@
           </div>
         </div>
 
+        <!-- BOTÃO DE TRANSIÇÃO DIRETO PARA A SOLUÇÃO / OFERTA (SOP-10 / KEVANO) -->
+        <div class="bg-gradient-to-b from-brand-50/80 via-white to-white rounded-3xl p-6 sm:p-8 shadow-card border-2 border-brand-500 text-center space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100 text-brand-800 text-xs font-black uppercase tracking-wider">
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-600 animate-pulse"></span>
+            Direcionamento Pedagógico Disponível
+          </div>
+
+          <h3 class="text-xl sm:text-2xl font-black text-slate-900 leading-tight">
+            Como destravar a leitura do(a) <span class="res-child-name-inline text-brand-600">seu filho</span> em até 21 dias sem choro?
+          </h3>
+
+          <p class="text-sm sm:text-base text-slate-600 max-w-lg mx-auto">
+            Com base no diagnóstico da <strong>Fase Silábica</strong>, pedagogos prepararam a solução oficial com o <strong>Método das Cores</strong> que ativa as 3 áreas cerebrais simultaneamente.
+          </p>
+
+          <button onclick="goToStep('offer')" class="w-full bg-[#107C41] hover:bg-[#0D6535] active:bg-[#0A4F2A] text-white font-extrabold text-base sm:text-lg py-4 px-6 rounded-2xl shadow-btn transition-all duration-200 flex items-center justify-center gap-3 group pulse-btn">
+            <span>QUERO VER A SOLUÇÃO PARA O(A) <span class="res-child-name-inline uppercase font-black">SEU FILHO</span></span>
+            <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+          </button>
+
+          <div class="flex items-center justify-center gap-4 text-xs text-slate-500 font-medium pt-1">
+            <span class="flex items-center gap-1.5">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+              100% Alinhado à BNCC
+            </span>
+            <span class="flex items-center gap-1.5">
+              <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i>
+              Método Lúdico em 21 Dias
+            </span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ETAPA DA OFERTA (SOLUÇÃO DEFINITIVA): O CALOR DA VENDA IMEDIATO SEM ROLAGEM EXCESSIVA -->
+      <section id="step-offer" class="hidden space-y-6">
+
+        <!-- CABEÇALHO DE RETORNO AO DIAGNÓSTICO -->
+        <div class="flex items-center justify-between px-1">
+          <button onclick="goToStep('result')" class="text-xs sm:text-sm font-bold text-slate-500 hover:text-brand-600 flex items-center gap-1.5 transition-colors">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            Rever Diagnóstico do(a) <span class="res-child-name-inline font-extrabold">seu filho</span>
+          </button>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
+            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600"></i>
+            Solução & Bônus Liberados
+          </span>
+        </div>
+
         <!-- CARD 4: A SOLUÇÃO DEFINITIVA (OFERTA COM CAPAS E FOTOS REAIS DO PRODUTO) -->
         <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-card border border-brand-300 relative overflow-hidden">
           <div class="absolute -right-12 -top-12 w-44 h-44 bg-brand-50 rounded-full blur-3xl pointer-events-none"></div>
@@ -1659,13 +1708,13 @@
       if (mainContainer) {
         if (stepNumber === 0) {
           mainContainer.className = "w-full max-w-3xl transition-all duration-300";
-        } else if (stepNumber === 'result') {
+        } else if (stepNumber === 'result' || stepNumber === 'offer') {
           mainContainer.className = "w-full max-w-2xl transition-all duration-300";
         } else {
           mainContainer.className = "w-full max-w-xl transition-all duration-300";
         }
       }
-      const sections = ['step-0', 'step-1', 'step-2', 'step-3', 'step-interlude', 'step-4', 'step-5', 'step-6', 'step-calculating', 'step-result'];
+      const sections = ['step-0', 'step-1', 'step-2', 'step-3', 'step-interlude', 'step-4', 'step-5', 'step-6', 'step-calculating', 'step-result', 'step-offer'];
       sections.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.classList.add('hidden');
@@ -1677,7 +1726,7 @@
       const progressText = document.getElementById('progress-text');
       const progressLabel = document.getElementById('progress-label');
 
-      if (stepNumber === 0 || stepNumber === 'result') {
+      if (stepNumber === 0 || stepNumber === 'result' || stepNumber === 'offer') {
         progressContainer.classList.add('hidden');
       } else {
         progressContainer.classList.remove('hidden');
@@ -1714,10 +1763,16 @@
         runCalculationAnimation();
       }
 
-      // Se for a tela de resultado, inicializar countdown e link do checkout
+      // Gerenciamento específico das telas de Diagnóstico e Oferta
       if (stepNumber === 'result') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (stepNumber === 'offer') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         startCountdown(15 * 60);
         updateTotalOffer();
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'ViewContent', { content_name: 'Solução Colorindo as Sílabas', value: 14.90, currency: 'BRL' });
+        }
       }
 
       // Atualizar ícones renderizados
