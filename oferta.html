@@ -1785,6 +1785,7 @@
         
         if (typeof fbq !== 'undefined') {
           fbq('trackCustom', 'QuizComplete', { idade: quizState.idade, childName: quizState.childName });
+          fbq('track', 'Lead', { content_name: 'Avaliação Diagnóstica Concluída', content_category: 'Alfabetização Infantil' });
         }
 
         goToStep('result');
@@ -1837,10 +1838,25 @@
         descEl.innerHTML = "Pagamento único • Acesso vitalício à <strong>Apostila Colorindo as Sílabas + 3 Bônus Gratuitos</strong>";
       }
 
-      // Link dinâmico do checkout da Cakto com UTMs
+      // Link dinâmico do checkout da Cakto com UTMs e disparo nativo de InitiateCheckout
       const btnCheckout = document.getElementById('btn-checkout');
       if (btnCheckout) {
         btnCheckout.href = construirUrlCheckoutCakto();
+        if (!btnCheckout.dataset.tracked) {
+          btnCheckout.dataset.tracked = "true";
+          btnCheckout.addEventListener('click', function() {
+            try {
+              if (typeof fbq !== 'undefined') {
+                fbq('track', 'InitiateCheckout', {
+                  content_name: 'Apostila Colorindo as Sílabas + 3 Bônus',
+                  content_category: 'Educação Infantil',
+                  value: 14.90,
+                  currency: 'BRL'
+                });
+              }
+            } catch(e) {}
+          });
+        }
       }
     }
 
