@@ -1,36 +1,28 @@
 {
-  "version": 2,
   "cleanUrls": true,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/assets/(.*)",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
-      },
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/",
+      "source": "/",
       "has": [
         {
           "type": "query",
           "key": "fbclid"
         }
       ],
-      "dest": "/oferta.html"
+      "destination": "/oferta.html"
     },
     {
-      "src": "/",
+      "source": "/",
       "has": [
         {
           "type": "query",
           "key": "utm_source"
         }
       ],
-      "dest": "/oferta.html"
+      "destination": "/oferta.html"
     },
     {
-      "src": "/",
+      "source": "/",
       "has": [
         {
           "type": "query",
@@ -38,15 +30,22 @@
           "value": "kevano"
         }
       ],
-      "dest": "/oferta.html"
+      "destination": "/oferta.html"
     },
     {
-      "src": "/oferta",
-      "dest": "/oferta.html"
-    },
+      "source": "/oferta",
+      "destination": "/oferta.html"
+    }
+  ],
+  "headers": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
 }
