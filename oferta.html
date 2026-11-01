@@ -1610,10 +1610,7 @@
         const sckVal = searchParams.get('utm_campaign') || searchParams.get('utm_source') || 'quiz_organico';
         url.searchParams.set('sck', sckVal);
 
-        // Parâmetro do nome da criança
-        if (quizState.childName && quizState.childName !== 'seu pequeno') {
-          url.searchParams.set('name', quizState.childName);
-        }
+        // Não enviar o nome da criança em ?name= para não preencher o campo 'Nome completo' do comprador no checkout Cakto
 
         return url.toString();
       } catch (e) {
